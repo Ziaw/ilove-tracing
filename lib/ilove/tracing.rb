@@ -1,8 +1,11 @@
-require "ilove/tracing/version"
+require 'ilove/tracing/version'
+require 'active_support/dependencies'
 
-module Ilove
+module ILove
   module Tracing
     class Error < StandardError; end
-    # Your code goes here...
+
+    
+
   end
 end

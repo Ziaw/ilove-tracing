@@ -1,8 +1,10 @@
-# Ilove::Tracing
+# I love tracing
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ilove/tracing`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Create opentracing spans on:
+ - rack http requests ()
+ - activerecord sql
+ - twrip_rails service calls
+ - faraday outgoing requests 
 
 ## Installation
 
@@ -15,10 +17,6 @@ gem 'ilove-tracing'
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install ilove-tracing
 
 ## Usage
 
