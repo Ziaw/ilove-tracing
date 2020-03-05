@@ -12,6 +12,9 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'ilove-tracing'
+gem 'opentracing'
+
+gem 'jaeger-client' # or other opentracing client implementation
 ```
 
 And then execute:
