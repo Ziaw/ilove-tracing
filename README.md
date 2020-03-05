@@ -1,7 +1,7 @@
 # I love tracing
 
 Create opentracing spans on:
- - rack http requests ()
+ - rack http requests
  - activerecord sql
  - twrip_rails service calls
  - faraday outgoing requests 
@@ -20,7 +20,7 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add initializer file
 
 ## Development
 
