@@ -1,8 +1,10 @@
-# Ilove::Tracing
+# I love tracing
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ilove/tracing`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Help to trace rack based applications and microservices. Create opentracing spans on:
+ - [Rack http requests](#tracing-rack-http-requests)
+ - [ActiveRecord sql](#tracing-activerecord-sql)
+ - [Twrip service calls](#tracing-twrip_rails-service-calls)
+ - [Faraday outgoing requests](#tracing-faraday-outgoing-requests)
 
 ## Installation
 
@@ -16,13 +18,51 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install ilove-tracing
-
 ## Usage
 
-TODO: Write usage instructions here
+Create and customize the initializer file:
+
+```sh
+$ rails g tracing:init
+```
+
+This creates `initializers/ilove-tracing.rb` file. 
+
+_N.B. If you not use Rails - copy it from gem sources 
+`cp $(bundle show ilove-tracing)/lib/generators/tracing/init/templates/ilove_tracing.rb ./`_ 
+
+## Tracing Rack http requests
+
+Tracer creates opentracing span named `incoming http request` with parent of incoming http context.
+
+## Tracing ActiveRecord SQL
+
+Creates span of all executed queries named `sql.active_record`. Tags sql.name, sql.statement, sql.statement_name.
+
+## Tracing twrip_rails service calls
+
+Instrument all twirp services mounted by twirp_rails. Creates span named `twirp call` on incoming twirp calls. 
+Tags: `service`, `method`. 
+
+To trace twirp services without twirp_rails call 
+```ruby
+require 'ilove/tracing/twirp.rb'
+
+ILove::Tracing::Twirp.trace_service(service)
+```
+
+## Tracing faraday outgoing requests
+
+Instrument all faraday outgoing requests. Creates span named `outgoing http request`. 
+Inject active span to request headers. 
+Tags: `url`, `method`. 
+
+_N.B. This option uses monkey patch of `Faraday::ConnectionOptions` to inject middleware to all faraday 
+(and twirp clients) requests._
+
+## Pass request_id header from incoming requests to outgoing requests.
+
+If this options turned on (default if `config.enabled?`) then header `X-Request-Id` from incoming http requests
 
 ## Development
 
@@ -32,7 +72,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ilove-tracing. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/severgroup-tt/ilove-tracing. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
