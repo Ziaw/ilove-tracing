@@ -33,7 +33,7 @@ jobs:
             - ~/.bundler
       - run:
           name: Rspec
-          command: bundle exec rspec -f progress -f RspecJunitFormatter --out /tmp/test-results/rspec.xml
+          command: bundle exec rspec --out /tmp/test-results/rspec.xml
 
 workflows:
   version: 2
