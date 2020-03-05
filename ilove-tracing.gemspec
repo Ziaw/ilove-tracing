@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0")
-                     .reject { |f| f.match(%r{^(bin|test|spec|features)/}) }
+                     .reject { |f| f.match(%r{^(bin|doc|test|spec|features)/}) }
   end
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
