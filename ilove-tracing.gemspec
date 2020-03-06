@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Alexandr Zimin']
   spec.email         = ['a.zimin@talenttech.ru']
 
-  spec.summary       = 'Opentracing plugins to instrument rails, twirp_rails, faradey, active_record.'
-  spec.description   = 'Opentracing plugins to instrument rails, twirp_rails, faradey, active_record.'
+  spec.summary       = 'Opentracing plugins to instrument rails, twirp_rails, faraday, active_record.'
+  spec.description   = 'Opentracing plugins to instrument rails, twirp_rails, faraday, active_record.'
   spec.homepage      = 'http://github.com/severgroup-tt/ilove-tracing'
   spec.license       = 'MIT'
 
