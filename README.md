@@ -65,7 +65,7 @@ _N.B. This option uses monkey patch of `Faraday::ConnectionOptions` to inject mi
 
 ## Pass request_id header from incoming requests to outgoing requests.
 
-If this options turned on (default if `config.enabled?`) then header `X-Request-Id` from incoming http requests
+If this options turned on (default if `config.enabled?`) then header `X-Request-Id` from incoming http requests passed to outgoing.
 
 ## Development
 
